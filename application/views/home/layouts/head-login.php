@@ -2,7 +2,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<title><?= (!empty($judul)) ? $judul . ' | Permata Smart' : 'Permata Smart' ?></title>
+<title><?= (!empty($judul)) ? $judul . ' | Permata Smart' :'Permata Smart' ?></title>
 <link rel="shortcut icon" href="<?= base_url('assets/img/icon.png') ?>">
 
 <!-- Custom fonts for this template-->
