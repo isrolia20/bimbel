@@ -45,7 +45,7 @@
 <script src="<?= base_url('assets/landingpage/js/jquery.js'); ?>"></script>
 <script src="<?= base_url('assets/landingpage/js/bootstrap.bundle.min.js'); ?>"></script>
 <script src="<?= base_url('assets/admin/js/swiper.min.js'); ?>"></script>
-<script src="<?= base_url('assets/admin/js/aos.js'); ?>"></script>
+<script src="<?= base_url('assets/admin/js/aos.js'); ?>"></script>  
 <script>
   var galleryThumbs = new Swiper('.gallery-thumbs', {
     effect: 'coverflow',

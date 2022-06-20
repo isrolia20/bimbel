@@ -23,10 +23,10 @@
 
 
 
-
+	
 	<script src="<?= base_url('assets/admin/js/jquery.min.js'); ?>"></script>
 	<script src="<?= base_url('assets/admin/js/popper.min.js'); ?>"></script>
-	<script src="<?= base_url('assets/admin/js/jquery.nicescroll.min.js'); ?>"></script>
+	<script src="<?= base_url('assets/admin/js/page/jquery.nicescroll.min.js'); ?>"></script>
 	<script src="<?= base_url(); ?>assets/admin/modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
 
