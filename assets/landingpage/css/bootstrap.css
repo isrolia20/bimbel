@@ -1,38 +1,11 @@
 @charset "UTF-8";
-
+@import url('../../css/environtment.css');
 /*!
  * Bootstrap v5.0.1 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-:root {
-  --bs-blue: #F9A826;
-  --bs-indigo: #6610f2;
-  --bs-purple: #6f42c1;
-  --bs-pink: #d63384;
-  --bs-red: #dc3545;
-  --bs-orange: #fd7e14;
-  --bs-yellow: #ffc107;
-  --bs-green: #198754;
-  --bs-teal: #20c997;
-  --bs-cyan: #0dcaf0;
-  --bs-white: #fff;
-  --bs-gray: #6c757d;
-  --bs-gray-dark: #343a40;
-  /* --bs-primary: #F9A826; */
-  --bs-primary: #F9A826;
-  --bs-secondary: #6c757d;
-  --bs-success: #198754;
-  --bs-info: #0dcaf0;
-  --bs-warning: #ffc107;
-  --bs-danger: #dc3545;
-  --bs-light: #f8f9fa;
-  --bs-dark: #212529;
-  --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-}
 
 *,
 *::before,
@@ -154,7 +127,9 @@ p {
   margin-top: 0;
   margin-bottom: 1rem;
 }
-
+.cursor-pointer{
+  cursor: pointer;
+}
 abbr[title],
 abbr[data-bs-original-title] {
   -webkit-text-decoration: underline dotted;
@@ -235,7 +210,7 @@ sup {
 }
 
 a {
-  color: #F9A826;
+  color: var(--primary-color);
   text-decoration: underline;
 }
 
@@ -3153,21 +3128,21 @@ fieldset:disabled .btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #F9A826;
-  border-color: #F9A826;
+  background-color: var(--primary-color);
+  border-color: transparent;
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #e68e00;
-  border-color: #e68e00;
+  background-color: var(--bs-info);
+  border-color: var(--bs-cyan);
 }
 
 .btn-check:focus+.btn-primary,
 .btn-primary:focus {
   color: #fff;
-  background-color: #e68e00;
-  border-color: #e68e00;
+  background-color: var(--primary-color);
+  border-color: var(--bs-cyan);
   box-shadow: 0 0 0 0.25rem rgba(49, 132, 253, 0.5);
 }
 
@@ -3177,8 +3152,8 @@ fieldset:disabled .btn {
 .btn-primary.active,
 .show>.btn-primary.dropdown-toggle {
   color: #fff;
-  background-color: #e68e00;
-  border-color: #e68e00;
+  background-color: var(--primary-color);
+  border-color: transparent;
 }
 
 .btn-check:checked+.btn-primary:focus,
@@ -3192,8 +3167,8 @@ fieldset:disabled .btn {
 .btn-primary:disabled,
 .btn-primary.disabled {
   color: #fff;
-  background-color: #F9A826;
-  border-color: #F9A826;
+  background-color: var(--primary-color);
+  border-color: transparent;
 }
 
 .btn-secondary {
@@ -3512,14 +3487,14 @@ fieldset:disabled .btn {
 }
 
 .btn-outline-primary {
-  color: #F9A826;
-  border-color: #F9A826;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
 }
 
 .btn-outline-primary:hover {
   color: #fff;
-  background-color: #F9A826;
-  border-color: #F9A826;
+  background-color: var(--primary-color);
+  border-color: transparent;
 }
 
 .btn-check:focus+.btn-outline-primary,
@@ -4412,7 +4387,7 @@ fieldset:disabled .btn {
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
-  color: #F9A826;
+  color: var(--);
   text-decoration: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
@@ -4510,8 +4485,10 @@ fieldset:disabled .btn {
 }
 
 .navbar {
-  position: relative;
+  position: fixed;
   display: flex;
+  width: 100%;
+  background-color: #fff;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
@@ -8269,7 +8246,7 @@ fieldset:disabled .btn {
 
 /* rtl:end:remove */
 .text-primary {
-  color: #F9A826 !important;
+  color: var(--primary-color) !important;
 }
 
 .text-secondary {
@@ -8325,7 +8302,7 @@ fieldset:disabled .btn {
 }
 
 .bg-primary {
-  background-color: #F9A826 !important;
+  background-color: var(--primary-color) !important;
 }
 
 .bg-secondary {

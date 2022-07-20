@@ -11,7 +11,7 @@
 		<div class="container">
 			<h2>Pembayaran</h2>
 			<p>Silahkan lakukan pembayaran ke No REK BRI : 614501026756530/A.N Hasanatun Isroliyah</p> 
-			<p>agar dapat bertemu tutor favorit kamu</p>
+			<p>setelah upload bukti pembayaran, admin akan memverifikasi data</p>
 		</div>
 	</div><!-- End Breadcrumbs -->
 
@@ -23,13 +23,13 @@
 						<thead>
 							<tr>
 								<th>No</th>
-								<th>Paket</th>
-								<th>Jadwal</th>
-								<th>Durasi</th>
-								<th>Status</th>
+								<th>Status Trasaction</th>
 								<!-- <th>Bayaran</th> -->
 								<th>Harga</th>
+								<th>Discount</th>
 								<th>Bukti Pembayaran</th>
+								<th>Nama Pengajar</th>
+								<th>Mata Pelajaran</th>
 								<th>Action</th>
 							</tr>
 						</thead>
@@ -39,12 +39,9 @@
 							foreach ($data as $row) { ?>
 								<tr>
 									<td scope="row"><?= $no++ ?></td>
-									<td><?= $row->package_name; ?></td>
-									<td><?= $row->pukul; ?></td>
-									<td><?= $row->duration; ?></td>
 									<td><?= $row->status; ?></td>
-									<!-- <td><?= $row->total; ?></td> -->
 									<td><?= $row->total; ?></td>
+									<td><?= $row->discount; ?></td>
 									<td>
 										<?php
 										if ($row->receipt) {
@@ -54,55 +51,22 @@
 										}
 										?>
 									</td>
+									<td><?= $row->tutor_name; ?></td>
+									<td><?= $row->course_name; ?></td>
 									<td>
-										<button onclick="uploadReceipt(<?= $row->transaction_id; ?>)" class="btn btn-primary">Upload Bukti Pembayaran</button>
+										<?php if (!$row->receipt){
+												echo '<button onclick="uploadReceipt('. $row->transaction_id.')" class="btn btn-primary">Upload Bukti Pembayaran</button>';
+											}else{
+												if($row->status === 'verified'){
+													echo '<button disabled class="btn btn-success">Verified</button>';
+												}else{
+													echo '<button disabled class="btn btn-secondary">Menunggu Verifikasi</button>';
+												}
+											}
+										?>
 									</td>
 								</tr>
 							<?php } ?>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- ======= Breadcrumbs ======= -->
-	<div class="breadcrumbs">
-		<div class="container">
-			<h2>Jadwal</h2>
-			<p>Jadwal Kamu Sedang di Proses Admin, Silahkan Tunggu </p>
-		</div>
-	</div><!-- End Breadcrumbs -->
-
-	<section class="section text-dark">
-		<div class="container" data-aos="fade-up">
-			<div class="row">
-				<div class="col-12">
-					<table class="table">
-						<thead>
-							<tr>
-								<th>No</th>
-								<th>Kelas</th>
-								<th>Hari</th>
-								<th>Jadwal</th>
-								<th>Durasi</th>
-
-							</tr>
-						</thead>
-						<tbody>
-							<?php
-							$no = 1;
-							foreach ($data as $row) : ?>
-								<?php if ($row->status == 'verified') : ?>
-									<tr>
-										<td scope="row"><?= $no++ ?></td>
-										<td><?= $row->kelas; ?></td>
-										<td><?= $row->hari; ?></td>
-										<td><?= $row->pukul; ?></td>
-										<td><?= $row->duration; ?></td>
-									</tr>
-								<?php endif; ?>
-							<?php endforeach; ?>
 						</tbody>
 					</table>
 				</div>
@@ -131,7 +95,6 @@
 						<button type="submit" class="btn btn-primary">Save</button>
 					</div>
 				</form>
-
 			</div>
 		</div>
 	</div>

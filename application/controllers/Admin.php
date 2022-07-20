@@ -348,34 +348,19 @@ class Admin extends CI_Controller
         $this->load->view('templates/admin/footer', $data);
     }
 
+    public function page_course()
+    {
+        $data['title'] = 'Riwayat Transaksi';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        //tampilkan data tanaman sesuai user
+        $data['riwayat_penjualan'] = $this->dam->riwayat_penjualan();
+        $this->load->view('templates/admin/header', $data);
+        $this->load->view('templates/admin/sidebar', $data);
+        $this->load->view('templates/admin/navbar', $data);
+        $this->load->view('admin/riwayat_penjualan', $data);
+        $this->load->view('templates/admin/footer', $data);
+    }
     public function my_profile()
     {
         $data['title'] = 'My Profile';
@@ -384,6 +369,14 @@ class Admin extends CI_Controller
         $this->load->view('templates/admin/sidebar', $data);
         $this->load->view('templates/admin/navbar', $data);
         $this->load->view('admin/my_profile', $data);
+        $this->load->view('templates/admin/footer', $data);
+    }
+    public function course(){
+        $data['title'] = 'List Mata Pelajaran';
+        $this->load->view('templates/admin/header', $data);
+        $this->load->view('templates/admin/sidebar', $data);
+        $this->load->view('templates/admin/navbar', $data);
+        $this->load->view('admin/pages', $data);
         $this->load->view('templates/admin/footer', $data);
     }
     public function edit_profile()

@@ -220,17 +220,6 @@ foreach ($data_paket as $dpk) : ?>
 	</div>
 <?php endforeach; ?>
 <!-- End Delete Paket -->
-
-
-
-
-
-
-
-
-
-
-
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#myTable').DataTable({

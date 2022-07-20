@@ -16,17 +16,13 @@
 								<thead>
 									<tr>
 										<th>No</th>
-										<th>Paket</th>
-										<th>Kelas</th>
 										<th>Hari</th>
-										<th>Jadwal</th>
-										<th>Durasi</th>
-										<th>Status</th>
-										<th>Tutor</th>
+										<th>Jam Mulai</th>
+										<th>Jam Selesai</th>
+										<th>Jumlah Murid</th>
 										<!-- <th>Bayaran</th> -->
 										<!-- <th>Harga</th> -->
-										<!-- <th>Bukti Pembayaran</th>
-														<th>Action</th> -->
+										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -35,34 +31,20 @@
 									foreach ($data as $row) { ?>
 										<tr>
 											<td scope="row"><?= $no++ ?></td>
-											<td><?= $row->package_name; ?></td>
-											<td><?= $row->kelas; ?></td>
-											<td><?= $row->hari; ?></td>
-											<td><?= $row->pukul; ?></td>
-											<td><?= $row->duration; ?></td>
-											<td><?= $row->status; ?></td>
-											<th><?= $row->tutor; ?></th>
+											<td><?= $row->date; ?></td>
+											<td><?= $row->start_time; ?></td>
+											<td><?= $row->end_time; ?></td>
+											<td><?= $row->count_student; ?></td>
+											<td>
+												<a href="#edit<?= str_replace(" ", "_", strtolower($row->id)); ?>" class="btn btn-primary btn-class" data-toggle="modal">
+													<i class="fas fa-edit"></i>
+												</a>
+												<a href="#delete<?= str_replace(" ", "_", strtolower($row->id)); ?>" class="btn btn-danger btn-class" data-toggle="modal">
+													<i class="fa fa-trash"></i>
+												</a>
+											</td>
 										</tr>
 									<?php } ?>
-								</tbody>
-							</table>
-
-
-							<!-- ======= Breadcrumbs ======= -->
-							<div class="breadcrumbs">
-								<div class="container">
-								</div>
-							</div><!-- End Breadcrumbs -->
-								</thead>
-								<tbody>
-									<?php
-									$no = 1;
-									foreach ($data as $row) : ?>
-										<?php if ($row->status == 'verified') : ?>
-											<tr>	
-											</tr>
-										<?php endif; ?>
-									<?php endforeach; ?>
 								</tbody>
 							</table>
 
@@ -103,7 +85,6 @@
 							<option value="block">Block</option>
 						</select>
 						<span class="help-block text-danger text-capitalize"></span>
-
 					</div>
 					<!-- <div class="form-group">
 						<label for="">Is Active</label>
@@ -281,42 +262,42 @@
 	// };
 
 
-	// function updateList(id) {
-	// 	save_method = 'update';
-	// 	url_id = id;
-	// 	$('.form-group').removeClass('has-error'); // clear error class
-	// 	$('.help-block').empty(); // clear error string
-	// 	$.ajax({
-	// 		url: "<?= base_url('TransactionController/get_id/'); ?>" + id,
-	// 		type: 'GET',
-	// 		dataType: 'JSON',
-	// 		success: function(data) {
-	// 			$('[name="id"]').val(data.id);
-	// 			$('[name="id"]').prop("disabled", true);
-	// 			// $('[name="student_id"]').val(data.student_id);
-	// 			// $('[name="package_id"]').val(data.package_id);
-	// 			$('[name="status"]').val(data.status);
-	// 			// $('[name="is_active"]').val(data.is_active);
-	// 			// $('[name="discount"]').val(data.discount);
-	// 			// $('[name="total"]').val(data.total);
-	// 			// $('[name="schedule"]').val(data.schedule);
+	function updateList(id) {
+		save_method = 'update';
+		url_id = id;
+		$('.form-group').removeClass('has-error'); // clear error class
+		$('.help-block').empty(); // clear error string
+		$.ajax({
+			url: "<?= base_url('TransactionController/get_id/'); ?>" + id,
+			type: 'GET',
+			dataType: 'JSON',
+			success: function(data) {
+				$('[name="id"]').val(data.id);
+				$('[name="id"]').prop("disabled", true);
+				// $('[name="student_id"]').val(data.student_id);
+				// $('[name="package_id"]').val(data.package_id);
+				$('[name="status"]').val(data.status);
+				// $('[name="is_active"]').val(data.is_active);
+				// $('[name="discount"]').val(data.discount);
+				// $('[name="total"]').val(data.total);
+				// $('[name="schedule"]').val(data.schedule);
 
-	// 			$('#receipt-preview').show();
-	// 			if (data.receipt) {
-	// 				$('#label-receipt').text('Change Avatar'); // label receipt upload
-	// 				$('#receipt-preview div').html('<img src="' + base_url + 'upload/' + data.receipt + '" class="img-responsive mb-3 img-preview" style="width: 100px">'); // show photo					
-	// 			} else {
-	// 				$('#label-receipt').text('Upload Avatar'); // label receipt upload
-	// 				$('#receipt-preview div').text('(No receipt)');
-	// 			}
+				$('#receipt-preview').show();
+				if (data.receipt) {
+					$('#label-receipt').text('Change Avatar'); // label receipt upload
+					$('#receipt-preview div').html('<img src="' + base_url + 'upload/' + data.receipt + '" class="img-responsive mb-3 img-preview" style="width: 100px">'); // show photo					
+				} else {
+					$('#label-receipt').text('Upload Avatar'); // label receipt upload
+					$('#receipt-preview div').text('(No receipt)');
+				}
 
 
-	// 			$('#modalForm').modal('show');
-	// 			$('.modal-title').text('Update Data');
-	// 			reload_table();
-	// 		}
-	// 	});
-	// }
+				$('#modalForm').modal('show');
+				$('.modal-title').text('Update Data');
+				reload_table();
+			}
+		});
+	}
 
 	// function packageDropdown() {
 	// 	$.ajax({

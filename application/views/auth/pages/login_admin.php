@@ -4,10 +4,8 @@
 		<div class="d-flex flex-wrap align-items-stretch">
 			<div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
 				<div class="p-4 m-3">
-					<img height="70" class="mb-5" src="<?= base_url('assets/icon/liya3.png'); ?>" alt="" srcset="">
-
-
-					<h4 class="text-dark font-weight-normal">Selamat Datang di <span class="font-weight-bold">Pertama Smart</span></h4>
+				<img height="70" class="mb-5" src="<?= base_url('assets/icon/icon_navbar.png'); ?>" alt="" srcset="">
+					<h4 class="text-dark font-weight-normal">Selamat Datang di <span class="font-weight-bold text-primary">Briliant</span></h4>
 					<!-- <p class="text-muted">Before you get started, you must login or register if you don't already have an account.</p> -->
 					<?php
 					$message = $this->session->flashdata('message');

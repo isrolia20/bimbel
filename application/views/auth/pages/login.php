@@ -1,11 +1,11 @@
 <?php $this->load->view('auth/layouts/head-login'); ?>
-<div id="app">
+<div id="app" class="vh-100">
 	<section class="section">
-		<div class="d-flex flex-wrap align-items-stretch">
+		<div class="d-flex flex-wrap align-items-stretch h-full">
 			<div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
 				<div class="p-4 m-3">
-					<img height="70" class="mb-5" src="<?= base_url('assets/icon/liya3.png'); ?>" alt="" srcset="">
-					<h4 class="text-dark font-weight-normal">Selamat Datang di <span class="font-weight-bold">Pertama Smart</span></h4>
+					<img height="70" class="mb-5" src="<?= base_url('assets/icon/icon_navbar.png'); ?>" alt="" srcset="">
+					<h4 class="text-dark font-weight-normal">Selamat Datang di <span class="font-weight-bold text-primary">Briliant</span></h4>
 					<!-- <p class="text-muted">Before you get started, you must login or register if you don't already have an account.</p> -->
 					<?php
 					$message = $this->session->flashdata('message');
@@ -13,7 +13,6 @@
 						echo '<div class="alert alert-danger">' . $message . '</div>';
 						$this->session->unset_userdata('message');
 					}
-
 					?>
 					<form method="POST" action="<?= base_url('AuthController/auth_user'); ?>" class="needs-validation" novalidate="">
 						<div class="form-group">
@@ -40,7 +39,7 @@
 						</div>
 						<div class="form-group">
 							<label for="email">Masuk Sebagai: </label>
-							<select class="form-control" name="role">
+							<select class="form-control" id="role" name="role">
 								<option selected value="siswa">Siswa</option>
 								<option value="tutor">Tutor</option>
 							</select>
@@ -52,22 +51,31 @@
 							</button>
 						</div>
 					</form>
-					<div class="text-center mt-5 text-small text-primary">
-						Belum punya akun?, <span><a href="<?= base_url(''); ?>" class="fw-bold">Daftar Sekarang</a></span>
+					<div class="text-center mt-5 text-small text-dark">
+						Belum punya akun?, <span class="fw-bold text-primary cursor-pointer"><a onclick="register()">Daftar Sekarang</a></span>
 					</div>
-					<div class="text-center mt-5 text-small">
-						Copyright &copy; by Permata Smart
+					<div class="text-center text-small">
+						<span class="text-dark">Copyright</span> <span class="text-primary">&copy; by Briliant</span>
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-8 col-12 order-lg-2 order-1 min-vh-100 background-walk-y position-relative overlay-gradient-bottom" data-background="<?= base_url('assets/img/bg-login.jpeg'); ?>" style="background: url('<?= base_url('assets/img/bg-login.jpeg'); ?>');">
-				<div class="absolute-bottom-left index-2">
-					<div class="text-light p-5 pb-2">
-						<div class="mb-5 pb-3">
-							
-				</div>
+			<div class="col-lg-8 col-12 order-lg-2 order-1 h-full background-walk-y position-relative overlay-gradient-bottom" data-background="<?= base_url('assets/img/bg-login.jpeg'); ?>" style="background: url('<?= base_url('assets/img/bg-login.jpeg'); ?>');">
 			</div>
 		</div>
 	</section>
 </div>
-<?php $this->load->view('auth/layouts/footer-login'); ?>
+<script>
+	const current_url = window.location.href;
+	const base_url = "<?php echo base_url() ?>";
+	window.addEventListener('load', function() {
+		localStorage.removeItem('currUrl');
+	});
+	function register(){
+		const element = document.getElementById('role');
+		if (element.value === 'siswa'){
+			location.href = `${base_url}register/siswa`;
+		} else {
+			location.href = `${base_url}register/tutor`;
+		}
+	}
+</script>

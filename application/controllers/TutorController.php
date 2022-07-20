@@ -6,6 +6,7 @@ class TutorController extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		error_reporting(0);
 		$this->load->helper('date');
 		$this->load->model('Tutor', 'model_data');
 		// if ($this->session->userdata('success') != TRUE) {

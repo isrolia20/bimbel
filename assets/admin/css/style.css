@@ -53,6 +53,7 @@
 /* 2. Mixin */
 /* 3. Bootstrap Override */
 /* 3.1 Misc */
+@import url('../../css/environtment.css');
 @import url("//fonts.googleapis.com/css?family=Nunito:400,600,700,800");
 .btn:focus,
 .btn:active,
@@ -63,7 +64,7 @@
   outline: none; }
 
 a {
-  color: #ffb847;
+  color: var(--primary-color);
   font-weight: 500;
   transition: all .5s;
   -webkit-transition: all .5s;
@@ -101,7 +102,7 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
   background-color: #191d21 !important; }
 
 .text-primary, .text-primary-all *, .text-primary-all *:before, .text-primary-all *:after {
-  color: #ffb847 !important; }
+  color: var(--primary-color) !important; }
 
 .text-secondary, .text-secondary-all *, .text-secondary-all *:before, .text-secondary-all *:after {
   color: #cdd3d8 !important; }
@@ -162,7 +163,7 @@ p, ul:not(.list-unstyled), ol {
   .custom-select:focus,
   .custom-file-label:focus {
     background-color: #fefeff;
-    border-color: #ffc66a; }
+    border-color: var(--primary-color); }
 
 .input-group-text,
 select.form-control:not([size]):not([multiple]),
@@ -307,6 +308,14 @@ select.form-control:not([size]):not([multiple]) {
   font-size: 13px;
   min-width: 2.375rem;
   line-height: 36px; }
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.cursor-pointer:hover{
+  color: var(--bs-cyan) !important;
+}
 
 .selectgroup-button-icon {
   padding-left: .5rem;
@@ -648,7 +657,7 @@ select.form-control:not([size]):not([multiple]) {
     .card .card-header h4 {
       font-size: 16px;
       line-height: 28px;
-      color: #ffb847;
+      color: var(--primary-color);
       padding-right: 10px;
       margin-bottom: 0; }
       .card .card-header h4 + .card-header-action,
@@ -722,7 +731,7 @@ select.form-control:not([size]):not([multiple]) {
     background-repeat: no-repeat;
     background-position: center; }
   .card.card-primary {
-    border-top: 2px solid #ffb847; }
+    border-top: 2px solid var(--primary-color); }
   .card.card-secondary {
     border-top: 2px solid #cdd3d8; }
   .card.card-success {
@@ -1316,14 +1325,14 @@ h6 .badge {
 
 .btn-primary, .btn-primary.disabled {
   box-shadow: 0 2px 6px #acb5f6;
-  background-color: #ffb847;
-  border-color: #ffb847; }
+  background-color: var(--primary-color);
+  border-color: transparent; }
   .btn-primary:focus, .btn-primary.disabled:focus {
-    background-color: #ffae2c !important; }
+    background-color: var(--bs-cyan) !important; }
     .btn-primary:focus:active, .btn-primary.disabled:focus:active {
-      background-color: #ffae2c !important; }
+      background-color: var(--bs-cyan) !important; }
   .btn-primary:active, .btn-primary:hover, .btn-primary.disabled:active, .btn-primary.disabled:hover {
-    background-color: #ffae2c !important; }
+    background-color: var(--bs-cyan) !important; }
 
 .btn-outline-primary, .btn-outline-primary.disabled {
   border-color: #ffb847;
@@ -2006,7 +2015,7 @@ a.bb {
   font-size: 24px;
   text-transform: uppercase;
   letter-spacing: 4px;
-  color: #666;
+  color: var(--primary-color);
   text-align: center; }
 
 .font-weight-600 {
@@ -2814,7 +2823,7 @@ body.layout-3 .main-footer {
       .main-sidebar .sidebar-menu li a:hover {
         background-color: #f8fafb; }
     .main-sidebar .sidebar-menu li.active a {
-      color: #ffb847;
+      color: var(--primary-color);
       font-weight: 600;
       background-color: #f8fafb; }
       .main-sidebar .sidebar-menu li.active a.has-dropdown:after {

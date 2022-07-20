@@ -110,4 +110,10 @@ class Tutor extends CI_Model
 		$this->db->where('id', $id);
 		return $this->db->delete($this->table);
 	}
+
+	public function get_tutor_by_id($id){
+		$this->db->from($this->table);
+		$this->db->where('course_id', $id);
+		return $this->db->get();
+	}
 }

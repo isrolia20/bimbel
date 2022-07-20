@@ -117,13 +117,8 @@ class Leason extends CI_Model
 	// -================== v ==================-
 	public function get_data_leason()
 	{
-		$query = "SELECT * FROM leasons ORDER BY leasons.id ASC";
+		$query = "SELECT * FROM schedules ORDER BY id ASC";
 		return $this->db->query($query)->result_array();
 	}
 	// -================== v ==================-
-	public function get_data_leasonpackages()
-	{
-		$query = "SELECT packages.id, packages.name FROM packages ORDER BY packages.id ASC";
-		return $this->db->query($query)->result_array();
-	}
 }

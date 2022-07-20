@@ -163,7 +163,7 @@ class Auth extends CI_Controller
 
 
                 // $this->_sendEmail($token, 'verify');
-
+                
                 if ($true == true) {
                     $this->session->set_flashdata(
                         'message',
@@ -403,10 +403,6 @@ class Auth extends CI_Controller
         }
     }
 
-
-
-
-
     public function reset_password()
     {
         $email = $this->input->get('email');
@@ -437,10 +433,6 @@ class Auth extends CI_Controller
             redirect('Auth');
         }
     }
-
-
-
-
 
     public function change_password()
     {
@@ -482,22 +474,19 @@ class Auth extends CI_Controller
         }
     }
 
-
     //untuk logout
     public function logout()
     {
-        // $this->session->unset_userdata('id');
-        $this->session->unset_userdata('email');
-        $this->session->unset_userdata('role_id');
+        $this->session->sess_destroy();
         $this->session->set_flashdata(
             'message',
             '<div class="alert alert-success mx-4" role="alert">
-            Berhasil logout!
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-        </div>'
+                Berhasil logout!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>'
         );
-        redirect('Auth');
+        return redirect('/admin/login');
     }
 }

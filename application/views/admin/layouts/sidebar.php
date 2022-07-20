@@ -17,8 +17,7 @@ $url2 = $this->uri->segment(2);
 			<li class="<?= $url2 == "package" || $url2 == "feature" || $url2 == "leason" ? 'active' : '' ?> nav-item dropdown">
 				<a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-th-large"></i> <span>Data Master</span></a>
 				<ul class="dropdown-menu">
-					<li class="<?= $url2 == "package" ? 'active' : '' ?>"><a class="nav-link" href="<?= base_url('admin/package'); ?>">Paket Kelas</a></li>
-					<li class="<?= $url2 == "feature" ? 'active' : '' ?>"><a class="nav-link" href="<?= base_url('admin/feature'); ?>">Daftar Kelas</a></li>
+					<li class="<?= $url2 == "course" ? 'active' : '' ?>"><a class="nav-link" href='admin/course'>Mata Pelajaran & Kelas</a></li>
 					<li class="<?= $url2 == "leason" ? 'active' : '' ?>"><a class="nav-link" href="<?= base_url('admin/leason'); ?>">Jadwal Kelas</a></li>
 				</ul>
 			</li>
@@ -37,5 +36,6 @@ $url2 = $this->uri->segment(2);
 			</li>
 			<li class="menu-header">Setting</li>
 			<li class="<?= $url2 == "profile" ? 'active' : '' ?>"><a class="nav-link active" href="<?= base_url('admin/profile'); ?>"><i class="fas fa-user-tag"></i> <span>Profile</span></a></li>
+			<li><a class="nav-link active" href="<?= base_url('Auth/logout'); ?>"><i class="fas fa-arrow-right"></i> <span>Logout</span></a></li>
 	</aside>
 </div>

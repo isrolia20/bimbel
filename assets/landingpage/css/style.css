@@ -1,7 +1,9 @@
+@import url('../../css/environtment.css');
 body {
 	font-family: "Poppins", sans-serif;
 	overflow-x: hidden;
 	color: #fff;
+	background-color: var(--bs-light);
 }
 
 header {
@@ -32,7 +34,7 @@ header {
 	right: 0;
 	bottom: 0;
 	/* z-index: 2; */
-	background: linear-gradient(to top, #000, transparent);
+	background: linear-gradient(to top, var(--bs-gray-dark), transparent);
 	/* background-color: aqua; */
 }
 
@@ -81,7 +83,7 @@ header {
 }
 
 .show > .navbar-nav > li:hover {
-	color: #f9a826;
+	color: var(--primary-color);
 }
 
 .show > .navbar-nav > li > button {
@@ -102,14 +104,10 @@ header {
 }
 
 #section-2 {
-	background-color: #2f2e41;
+	background-color: #fff;
 	display: flex;
 	height: 100vh;
 	align-items: center;
-}
-
-#section-3 {
-	background-color: #f9a826;
 }
 
 #section-4 {
@@ -174,12 +172,6 @@ header {
 	transform: translateX(-50%);
 }
 
-section {
-	display: flex;
-	/* height: 100vh; */
-	align-items: center;
-}
-
 #section-5 {
 	padding: 2rem 0;
 	overflow-y: hidden;
@@ -213,19 +205,19 @@ section {
 
 .list-feature {
 	display: flex;
+	justify-items: center;
 	align-items: center;
-	justify-content: center;
 	list-style: none;
 	font-size: 12px;
 	margin: 0.5rem 1rem;
 }
 
 .list-feature > i {
-	color: #f9a826;
+	color: var(--primary-color);
 }
 
 footer {
-	background-color: #2f2e41;
+	background-color: var(--primary-color);
 	color: #fff;
 	padding: 4rem 0 1rem;
 }
@@ -233,7 +225,7 @@ footer {
 .footer-brand {
 	font-size: 2rem;
 	font-weight: 600;
-	color: #f9a826;
+	color: var(--primary-color);
 }
 
 .footer-desc {
@@ -250,7 +242,6 @@ footer {
 .footer-sosmed > li {
 	text-align: center;
 	display: inline-block;
-	margin-right: 20px;
 	font-size: 24px;
 	border-radius: 8px;
 	cursor: pointer;
@@ -462,10 +453,6 @@ footer {
 	.testimonial-section .user-saying {
 		width: 100%;
 	}
-
-	#section-3 > div > div > div > div {
-		width: 24rem !important;
-	}
 }
 
 /* Swiper */
@@ -533,7 +520,7 @@ footer {
 .loader-p:before,
 .loader-p:after {
 	content: "";
-	border: 1em solid #f9a826;
+	border: 1em solid var(--primary-color);
 	border-radius: 50%;
 	width: inherit;
 	height: inherit;
@@ -623,7 +610,7 @@ footer {
 .swiper-container-horizontal
 	> .swiper-pagination-bullets
 	.swiper-pagination-bullet {
-	background: black;
+	background: var(--primary-color);
 }
 
 section {
@@ -671,9 +658,8 @@ section {
 }
 
 .breadcrumbs {
-	margin-top: 73px;
 	text-align: center;
-	background: #ffb847;
+	background: var(--primary-color);
 	padding: 30px 0;
 	color: #fff;
 }
@@ -695,6 +681,7 @@ section {
 }
 
 .courses .course-item {
+	width: 100%;
 	border-radius: 5px;
 	border: 1px solid #eef0ef;
 }
@@ -724,7 +711,7 @@ section {
 
 .courses .course-content h4 {
 	font-size: 14px;
-	background: #e68e00;
+	background: var(--primary-color) !important;
 	padding: 7px 14px;
 	color: #fff;
 	margin: 0;

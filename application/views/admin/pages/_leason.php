@@ -19,7 +19,7 @@
 								<thead>
 									<tr>
 										<th scope="col">No</th>
-										<th scope="col">Paket</th>
+										<th scope="col">Mata Pelajaran</th>
 										<th scope="col">Hari</th>
 										<th scope="col">Waktu</th>
 										<th scope="col">Aksi</th>
@@ -34,13 +34,13 @@
 												<?= $no++; ?>
 											</td>
 											<td>
-												<?= $dtj['package_id'] ?>
+												<?= $dtj['id'] ?>
 											</td>
 											<td>
-												<?= $dtj['name'] ?>
+												<?= $dtj['date'] ?>
 											</td>
 											<td>
-												<?= $dtj['pukul'] ?>
+												<?= $dtj['start_time'] ?>
 											</td>
 											<td>
 												<a href="#edit<?= str_replace(" ", "_", strtolower($dtj['id'])); ?>" class="btn btn-primary btn-class" data-toggle="modal">

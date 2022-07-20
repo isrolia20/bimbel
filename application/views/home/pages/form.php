@@ -34,7 +34,7 @@
 								<input type="email" class="form-control" name="email" id="email" placeholder="" required>
 							</div>
 						</div>
-						<div class="form-group mt-3">
+						<!-- <div class="form-group mt-3">
 							<label for="">Kelas</label>
 							<select name="package_id" id="package_id" class="form-control" style="font-size: 1.3rem;">
 								<option value="" selected>Pilih Kelas</option>
@@ -45,7 +45,7 @@
 									<?php endif; ?>
 								<?php endforeach; ?>
 							</select>
-						</div>
+						</div> -->
 						<div class="mt-5 text-end">
 							<p>Harga Kelas: <span id="price"></span></p>
 						</div>

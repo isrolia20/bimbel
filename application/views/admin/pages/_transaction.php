@@ -17,7 +17,7 @@
 									<tr>
 										<th scope="col">#</th>
 										<th scope="col">Nama Siswa</th>
-										<th scope="col">Paket</th>
+										<th scope="col">Mata Pelajaran</th>
 										<th scope="col">Status</th>
 										<th scope="col">Total</th>
 										<!-- <th scope="col">Jadwal</th> -->
@@ -39,10 +39,18 @@
 												<?= $dtt['student_name'] ?>
 											</td>
 											<td>
-												<?= $dtt['package_name'] ?>
+												<?= $dtt['course_name'] ?>
 											</td>
 											<td>
-												<?= $dtt['status'] ?>
+												<?php if ($dtt['status'] == 'pending') {
+													echo '<span class="text-secondary">Pending</span>';
+												} else if ($dtt['status'] == 'verified') {
+													echo '<span class="text-success">Verified</span>';
+												} else if ($dtt['status'] == 'block') {
+													echo '<span class="text-danger">Blocked</span>';
+												} else {
+													echo '<span class="text-danger">Not Verified</span>';
+												} ?>
 											</td>
 											<td>
 												<?= $dtt['total'] ?>
@@ -89,14 +97,6 @@ foreach ($data_transaksi as $dtt) : ?>
 					<div class="modal-body">
 						<div class="form-group">
 							<input type="hidden" name="id" id="id" value="<?= $dtt['transaction_id']; ?>">
-							<label for="">Tutor</label>
-							<select name="tutor" id="tutor" class="form-control">
-								<option value="<?= $dtt['tutor_id'] ?>"><?= $dtt['tutor'] ?></option>
-								<?php foreach ($data_transaksitutor as $dtr) : ?>
-									<option value="<?= $dtr['id'] ?>"><?= $dtr['name'] ?></option>
-								<?php endforeach; ?>
-							</select>
-							<span class="help-block text-danger text-capitalize"></span>
 						</div>
 						<div class="form-group">
 							<label for="">Status</label>
@@ -394,17 +394,17 @@ foreach ($data_transaksi as $dtt) : ?>
 					type: "POST",
 					dataType: "JSON",
 					success: function(data) {
-						document.location.href = "<?= base_url('admin/transaction') ?>"
+						location.href = "<?= base_url('admin/transaction') ?>";
 					}
-
 				});
-			} else {
-				swal({
-					title: 'Dibatalkan',
-					icon: 'success',
-					type: 'success'
-				})
 			}
+			// else {
+			// 	swal({
+			// 		title: 'Dibatalkan',
+			// 		icon: 'success',
+			// 		type: 'success'
+			// 	})
+			// }
 		});
 
 

@@ -6,6 +6,7 @@ class FaqController extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        error_reporting(0);
         $this->load->model('Faq', 'model_data');
         // if ($this->session->userdata('success') != TRUE) {
         //     redirect(base_url());

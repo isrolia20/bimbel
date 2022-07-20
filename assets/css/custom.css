@@ -1,3 +1,4 @@
+@import url('./environtment.css');
 .bg-gradient-primary {
 	background-color: #F9A826 !important;
 	background-image: none;
@@ -6,7 +7,7 @@
 
 .btn-primary {
 	color: #fff;
-	background-color: #F9A826;
+	background-color: var(--primary-color) !important;
 	border-color: #b87100;
 }
 

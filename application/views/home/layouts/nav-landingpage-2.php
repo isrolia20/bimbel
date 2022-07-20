@@ -40,6 +40,7 @@
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown" data-bs-popper="none">
 							<li><a class="dropdown-item" href="<?= base_url('/lesson'); ?>">Paket Bimbel</a></li>
 							<li><a class="dropdown-item" href="<?= base_url('/payment'); ?>">Pembayaran</a></li>
+							<li><a class="dropdown-item" href="<?= base_url('/my-schedule'); ?>">Jadwal Saya</a></li>
 							<li class="dropdown-divider">
 							</li>
 							<li><a class="dropdown-item" href="<?= base_url('/logout'); ?>">Logout</a></li>

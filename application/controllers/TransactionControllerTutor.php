@@ -237,15 +237,8 @@ class TransactionControllerTutor extends CI_Controller
 		// $this->_validate();
 		$id = $this->input->post('id');
 		$data = array(
-			// 'student_id' => $this->session->userdata('id'),
-			// 'package_id' => $this->input->post('package_id'),
 			'tutor_id' => $this->input->post('tutor'),
 			'status' => $this->input->post('status'),
-			// 'is_active' => $this->input->post('is_active'),
-			// 'receipt' => $this->input->post('receipt'),
-			// 'discount' => $this->input->post('discount'),
-			// 'total' => $this->input->post('total'),
-			// 'schedule' => $this->input->post('schedule'),
 		);
 
 		$update = $this->model_data->update(array('id' => $id), $data);
@@ -262,7 +255,7 @@ class TransactionControllerTutor extends CI_Controller
 	public function delete($id = 0)
 	{
 		$this->model_data->delete($id);
-		echo json_encode(array("status" => TRUE));
+		echo exit(json_encode(array("status" => TRUE, "message" => "Data Berhasil dihapus")));
 	}
 
 	// private function _do_upload()

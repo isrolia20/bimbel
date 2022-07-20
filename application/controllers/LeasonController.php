@@ -17,7 +17,7 @@ class LeasonController extends CI_Controller
 	{
 		$data['title'] = "Jadwal";
 		$data['data_jadwal'] = $this->model_data->get_data_leason();
-		$data['data_leasonpaket'] = $this->model_data->get_data_leasonpackages();
+		// $data['data_leasonpaket'] = $this->model_data->get_data_leasonpackages();
 		$data['content'] = 'admin/pages/_leason';
 		$this->load->view('admin/layouts/master', $data);
 	}

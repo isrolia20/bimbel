@@ -88,6 +88,7 @@ class Student extends CI_Model
 		$query = $this->db->get();
 		return $query;
 	}
+
 	public function get_id($id)
 	{
 		$this->db->select('*, students.id AS student_id');
@@ -98,7 +99,10 @@ class Student extends CI_Model
 		return $query->row();
 	}
 
-
+	public function get_student_by_user($id){
+		$this->db->where('user_id', $id);
+		return $this->db->get($this->table)->row();
+	}
 
 	public function update($table, $id, $data)
 	{
@@ -111,5 +115,26 @@ class Student extends CI_Model
 	{
 		$this->db->where('id', $id);
 		return $this->db->delete($this->table);
+	}
+
+	public function validation_schedule($where){
+		$this->db->where($where);
+		$count = $this->db->get('schedule_student')->num_rows();
+		if($count > 0){
+			return false;
+		}else{
+			return true;
+		}
+	}
+
+	public function get_schedule($where){
+		$this->db->from('schedule_student');
+		$this->db->join('tutors', 'schedule_student.tutor_id = tutors.id', 'left');
+		$this->db->where($where);
+		return $this->db->get($this->table)->result_array();
+	}
+	public function add_schedule($data){
+		$this->db->insert('schedule_student', $data);
+		return $this->db->insert_id();
 	}
 }

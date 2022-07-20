@@ -6,13 +6,13 @@ class AdminController extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		error_reporting(0);
 		$this->load->helper('date');
 		$this->load->model('Admin', 'model_data');
 		if ($this->session->userdata('role') != 'admin') {
 			redirect(base_url());
 		}
 	}
-
 
 	public function index()
 	{

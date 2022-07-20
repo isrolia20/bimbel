@@ -23,7 +23,7 @@ class Transaction extends CI_Model
 
 		$this->db->join('tutors', 'tutors.id = tutor_id', 'left');
 		$this->db->join('students', 'students.id = transactions.student_id');
-		$this->db->join('packages', 'packages.id = transactions.package_id');
+		$this->db->join('transaction', 'transaction.student_id = students.id');
 		// $this->db->join('schedules', 'schedules.id = packages.schedule_id');
 		$this->db->from($this->table);
 		$i = 0;
@@ -100,7 +100,7 @@ class Transaction extends CI_Model
 	public function add($data)
 	{
 		$this->db->insert($this->table, $data);
-		return $this->db->insert_id();
+		return $this->db;
 	}
 	public function get_id($id)
 	{
@@ -138,16 +138,22 @@ class Transaction extends CI_Model
 		$this->db->delete($this->table);
 	}
 
-	public function get_by_package($id)
+	public function get_by_student($id)
 	{
-		$this->db->select('*, packages.name AS package, leasons.name AS leason, features.name AS feature');
-		$this->db->from('packages');
-		$this->db->join('leasons', 'leasons.package_id = packages.id', 'left');
-		$this->db->join('features', 'features.package_id = packages.id', 'left');
-		$this->db->where('packages.id', $id);
-
-		$query = $this->db->get();
-		return $query->row();
+		$this->db->select(
+			'transactions.id AS transaction_id,
+			transactions.status,
+			transactions.receipt, 
+			transactions.discount,
+			transactions.total,
+			tutors.name AS tutor_name,
+			course.name AS course_name'
+		);
+		$this->db->from('transactions');
+		$this->db->join('tutors', 'transactions.tutor_id = tutors.id', 'left');
+		$this->db->join('course', 'tutors.course_id = course.id', 'left');
+		$this->db->where('transactions.student_id', $id);
+		return $this->db->get();
 	}
 
 
@@ -158,11 +164,21 @@ class Transaction extends CI_Model
 	// -================== v ==================-
 	public function get_data_transaction()
 	{
-		$this->db->select('*,tutors.name AS tutor ,transactions.id AS transaction_id, students.name AS student_name, packages.name AS package_name, students.id AS student_id, packages.id AS package_id');
+		$this->db->select('
+			tutors.name AS tutor,
+			transactions.id AS transaction_id,
+			course.name AS course_name,
+			transactions.status AS status,
+			transactions.total AS total,
+			transactions.receipt AS receipt,
+			students.name AS student_name,
+			students.id AS student_id
+			');
 		$this->db->from($this->table);
-		$this->db->join('tutors', 'tutors.id = tutor_id', 'left');
 		$this->db->join('students', 'students.id = transactions.student_id');
-		$this->db->join('packages', 'packages.id = transactions.package_id');
+		$this->db->join('tutors', 'tutors.id = tutor_id');
+		$this->db->join('course', 'tutors.course_id = course.id');
+		$this->db->group_by($this->table.'.id');
 		$query = $this->db->get();
 		return $query->result_array();
 	}
@@ -171,5 +187,15 @@ class Transaction extends CI_Model
 	{
 		$query = "SELECT tutors.id, tutors.name FROM tutors ORDER BY tutors.id ASC";
 		return $this->db->query($query)->result_array();
+	}
+
+	public function validation_transaction($where){
+		$this->db->where($where);
+		$count = $this->db->get($this->table)->num_rows();
+		if($count > 0){
+			return false;
+		}else{
+			return true;
+		}
 	}
 }

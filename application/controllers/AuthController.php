@@ -7,12 +7,12 @@ class AuthController extends CI_Controller
 		parent::__construct();
 		// if ($this->session->userdata('role') == 'admin') redirect('/');
 		$this->load->model('Auth', 'auth');
+		$this->load->model('Course', 'model_data');
 		$this->form_validation->set_message('required', '{field} harap diisi terlebih dahulu.');
 	}
 
 	public function index()
 	{
-
 		if ($this->session->userdata('email')) {
 			return redirect('/');
 		}
@@ -44,7 +44,8 @@ class AuthController extends CI_Controller
 		if ($this->session->userdata('email')) {
 			return redirect('/');
 		}
-		$this->load->view('auth/pages/register_tutor');
+		$data['course'] = $this->model_data->get_course();
+		$this->load->view('auth/pages/register_tutor', $data);
 	}
 
 	public function save_tutor()
@@ -56,9 +57,6 @@ class AuthController extends CI_Controller
 			'is_active' => 'active',
 			'role' => 'tutor',
 		);
-
-
-
 		$email = $this->auth->authTutor(['email' => $this->input->post('email')])->num_rows();
 
 		if ($email < 1) {
@@ -92,9 +90,9 @@ class AuthController extends CI_Controller
 						'phone_number' => $this->input->post('phone_number', true),
 						'bio' => $this->input->post('bio', true),
 						'profession' => $this->input->post('profession', true),
-						'level' => $this->input->post('level', true),
-						'schedule' => $this->input->post('schedule', true),
+						'level' => 'sd',
 						'is_active' => 'inactive',
+						'course_id' => $this->input->post('course', true),
 						'is_available' => 'available',
 						'file_pdf' => $this->upload->data('file_name'),
 					);
@@ -129,8 +127,7 @@ class AuthController extends CI_Controller
 				'phone_number' => $this->input->post('phone_number', true),
 				'bio' => $this->input->post('bio', true),
 				'profession' => $this->input->post('profession', true),
-				'level' => $this->input->post('level', true),
-				'schedule' => $this->input->post('schedule', true),
+				'level' => "sd",
 				'is_active' => 'inactive',
 				'is_available' => 'available',
 			);
@@ -181,14 +178,24 @@ class AuthController extends CI_Controller
 			$insertStudent = $this->auth->saveStudent($additional_data);
 			// if (!$this->upload->do_upload('avatar')) {
 			if (false) {
-				echo $this->upload->display_errors();
-				die();
+				$response = [
+					'message' => 'Data gagal disimpan !',
+					'status' => 500,
+				];
+				exit(json_encode($response));
 			} else {
-				redirect('login');
+				$response = [
+					'message' => 'Data berhasil disimpan !',
+					'status' => 200,
+				];
+				exit(json_encode($response));
 			}
 		} else {
-			$this->session->set_flashdata('message', 'Email sudah terdaftar');
-			redirect('/register/siswa');
+			$response = array (
+				'message' => 'Data sudah terdaftar, tidak dapat mendaftar ulang',
+				'status' => 400,
+			);
+			exit(json_encode($response));
 		}
 	}
 
@@ -403,7 +410,6 @@ class AuthController extends CI_Controller
 
 	public function logout()
 	{
-
 		$this->session->sess_destroy();
 		redirect('login');
 	}
